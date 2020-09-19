@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://FontTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Evil Empire.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/DesignerButton.gd" type="Script" id=3]
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="DesignerButton" type="Button"]
+margin_right = 500.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 500, 53 )
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "--"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

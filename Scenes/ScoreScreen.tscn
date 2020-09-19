@@ -1,0 +1,178 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://FontTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/ScoreScreen.gd" type="Script" id=3]
+[ext_resource path="res://Art/ScoreBackground.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Fader.tscn" type="PackedScene" id=5]
+
+[node name="ScoreScreen" type="Node2D"]
+z_index = 99
+script = ExtResource( 3 )
+
+[node name="ScoreBackground" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="OuterContainer" type="VBoxContainer" parent="."]
+margin_left = 60.0
+margin_top = 30.0
+margin_right = 420.0
+margin_bottom = 240.0
+theme = ExtResource( 2 )
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreContainer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 9.0
+margin_right = 360.0
+margin_bottom = 25.0
+alignment = 1
+
+[node name="Label" type="Label" parent="OuterContainer/ScoreContainer"]
+margin_left = 145.0
+margin_right = 202.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SCORE - "
+align = 1
+valign = 1
+
+[node name="ScoreLabel" type="Label" parent="OuterContainer/ScoreContainer"]
+margin_left = 206.0
+margin_right = 214.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="ScoreContainer3" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 35.0
+margin_right = 360.0
+margin_bottom = 35.0
+theme = ExtResource( 2 )
+alignment = 1
+
+[node name="ScoreContainer2" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 45.0
+margin_right = 360.0
+margin_bottom = 45.0
+theme = ExtResource( 2 )
+alignment = 1
+
+[node name="BeatsHitContainer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 55.0
+margin_right = 360.0
+margin_bottom = 71.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OuterContainer/BeatsHitContainer"]
+margin_left = 136.0
+margin_right = 196.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Beats Hit"
+align = 1
+valign = 1
+
+[node name="BeatsHitLabel" type="Label" parent="OuterContainer/BeatsHitContainer"]
+margin_left = 216.0
+margin_right = 224.0
+margin_bottom = 16.0
+text = "0"
+
+[node name="OkayContainer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 81.0
+margin_right = 360.0
+margin_bottom = 97.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OuterContainer/OkayContainer"]
+margin_left = 149.0
+margin_right = 182.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Okay"
+
+[node name="OkayLabel" type="Label" parent="OuterContainer/OkayContainer"]
+margin_left = 202.0
+margin_right = 210.0
+margin_bottom = 16.0
+text = "0"
+
+[node name="GoodContainer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 107.0
+margin_right = 360.0
+margin_bottom = 123.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OuterContainer/GoodContainer"]
+margin_left = 149.0
+margin_right = 183.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0.227451, 0.901961, 0.235294, 1 )
+text = "Good"
+
+[node name="GoodLabel" type="Label" parent="OuterContainer/GoodContainer"]
+margin_left = 203.0
+margin_right = 211.0
+margin_bottom = 16.0
+text = "0"
+
+[node name="PerfectContainer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 133.0
+margin_right = 360.0
+margin_bottom = 149.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OuterContainer/PerfectContainer"]
+margin_left = 143.0
+margin_right = 189.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0.917647, 0.956863, 0.101961, 1 )
+text = "Perfect"
+
+[node name="PerfectLabel" type="Label" parent="OuterContainer/PerfectContainer"]
+margin_left = 209.0
+margin_right = 217.0
+margin_bottom = 16.0
+text = "0"
+
+[node name="Spacer" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 159.0
+margin_right = 360.0
+margin_bottom = 159.0
+alignment = 1
+
+[node name="Spacer2" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 169.0
+margin_right = 360.0
+margin_bottom = 169.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OuterContainer"]
+margin_top = 179.0
+margin_right = 360.0
+margin_bottom = 201.0
+alignment = 1
+
+[node name="ScoreButton" type="Button" parent="OuterContainer/HBoxContainer2"]
+margin_left = 137.0
+margin_right = 223.0
+margin_bottom = 22.0
+focus_mode = 0
+theme = ExtResource( 2 )
+action_mode = 0
+enabled_focus_mode = 0
+text = "Main Menu"
+
+[node name="Fader" parent="." instance=ExtResource( 5 )]
+visible = false
+[connection signal="pressed" from="OuterContainer/HBoxContainer2/ScoreButton" to="." method="_on_ScoreButton_pressed"]

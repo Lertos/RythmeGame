@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/LevelPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/AudioManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/ScoreScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Fader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FontTheme.tres" type="Theme" id=5]
+[ext_resource path="res://Scenes/BackgroundObjects.tscn" type="PackedScene" id=6]
+
+[node name="LevelPlayer" type="Node"]
+script = ExtResource( 1 )
+
+[node name="ObjectBackground" parent="." instance=ExtResource( 6 )]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Rect" type="ColorRect" parent="Background"]
+margin_left = 100.0
+margin_right = 380.0
+margin_bottom = 270.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioManager" parent="." instance=ExtResource( 2 )]
+
+[node name="ScoreScreen" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Button" type="Button" parent="."]
+margin_left = 6.0
+margin_top = 242.0
+margin_right = 92.0
+margin_bottom = 264.0
+theme = ExtResource( 5 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fader" parent="." instance=ExtResource( 4 )]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
